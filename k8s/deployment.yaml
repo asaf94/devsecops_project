@@ -1,11 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: asgbuggy-deployment
+apiVersion: apps/v1 # API version
+kind: Deployment # Deployment type
+metadata: # We are going to deploy
+  name: asgbuggy-deployment 
 spec:
-  replicas: 1
+  replicas: 1 # replicas
   selector:
-    matchLabels:
+    matchLabels: #lables
       app: asgbuggy
   template:
     metadata:
@@ -13,12 +13,13 @@ spec:
         app: asgbuggy
     spec:
       containers:
-      - name: asgbuggy
-        image: 145988340565.dkr.ecr.us-west-2.amazonaws.com/asg
+      - name: asgbuggy #name of container
+        image: 022006208139.dkr.ecr.us-east-1.amazonaws.com/asg #docker image that we want to deploy
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
-# service type loadbalancer       
+        - containerPort: 8080 #container port - standard port of web application
+# service type loadbalancer
+#expose this application to the internet   
 ---
 apiVersion: v1
 kind: Service
