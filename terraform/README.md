@@ -50,7 +50,7 @@ docker system prune
 docker image rm imagename  
 
 #To Create EKS cluster
-eksctl create cluster --name kubernetes-cluster --version 1.23 --region us-west-2 --nodegroup-name linux-nodes --node-type t2.xlarge --nodes 2 
+eksctl create cluster --name kubernetes-cluster --version 1.23 --region us-east-1 --nodegroup-name linux-nodes --node-type t2.xlarge --nodes 2 
 
 #To Delete EKS cluster
 eksctl delete cluster --region=us-west-2 --name=kubernetes-cluster #delete eks cluster
@@ -59,3 +59,12 @@ eksctl delete cluster --region=us-west-2 --name=kubernetes-cluster #delete eks c
 ## Step 4: Cleanup Terraform Resources
 ```
 terraform destroy -var-file="vars/dev-west-2.tfvars"
+
+
+Sometimes, Terraform is not able to delete or cleanup "enforced dependencies". For example, If you see below error:
+
+To fix above issues, you need to manually cleanup the resource from command line:
+
+To delete security group use aws ec2 delete-security-group --group-name jenkins_sg
+
+To delete instance profile use aws iam delete-instance-profile --instance-profile-name test_profile

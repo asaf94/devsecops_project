@@ -146,3 +146,7 @@ This demo shows: Start up -> Infinite Loop -> LDAP Injection -> UnsatisfiedLinkE
 2. AWS Credentials Plugin Version 
 3. Kubernetes CLI Plugin Version 1.12.1 
 4. Docker pipeline
+
+# Cleanup
+
+eksctl delete cluster --region=us-east-1 --name=kubernetes-cluster
