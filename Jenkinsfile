@@ -43,7 +43,7 @@ pipeline {
 	   steps {
 	      withKubeConfig([credentialsId: 'kubelogin']) {
 		  sh('kubectl delete all --all -n devsecops') // delete all in our namespace
-		  sh ('kubectl apply -f deployment.yaml --namespace=devsecops') // run the deployment in the k8s namespace
+		  sh ('kubectl apply -f k8s/deployment.yaml --namespace=devsecops') // run the deployment in the k8s namespace
 		}
 	      }
    	}
